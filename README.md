@@ -31,12 +31,12 @@ The project follows a modular Object-Oriented (OOP) design pattern to ensure sca
 
 ```mermaid
 graph LR
-    A[Raw IoT Data (CSV)] -->|ETL Pipeline| B[(SQLite Database)];
-    B -->|Query Stream| C{Inference Engine};
-    D[PyTorch Autoencoder] -->|Load Model| C;
-    C -->|Real-time Prediction| E[FastAPI Microservice];
-    C -->|Batch Visualization| F[Streamlit Dashboard];
-    E -->|JSON Response| G[Web Client (HTML/JS)];
+    A[Raw IoT Data (CSV)] --\|ETL Pipeline\|--> B[(SQLite Database)];
+    B --\|Query Stream\|--> C{Inference Engine};
+    D[PyTorch Autoencoder] --\|Load Model\|--> C;
+    C --\|Real-time Prediction\|--> E[FastAPI Microservice];
+    C --\|Batch Visualization\|--> F[Streamlit Dashboard];
+    E --\|JSON Response\|--> G[Web Client (HTML/JS)];
 
     style B fill:#f9f,stroke:#333,stroke-width:2px
     style D fill:#bbf,stroke:#333,stroke-width:2px

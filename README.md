@@ -29,19 +29,7 @@ Unlike standard "notebook-only" projects, this solution is architected as a prod
 
 The project follows a modular Object-Oriented (OOP) design pattern to ensure scalability and maintainability.
 
-```mermaid
-graph LR
-    A[Raw IoT Data (CSV)] --> ETL_Pipeline --> B[(SQLite Database)];
-    B --> Query_Stream --> C{Inference Engine};
-    D[PyTorch Autoencoder] --> Load_Model --> C;
-    C --> Real_time_Prediction --> E[FastAPI Microservice];
-    C --> Batch_Visualization --> F[Streamlit Dashboard];
-    E --> JSON_Response --> G[Web Client (HTML/JS)];
-
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style D fill:#bbf,stroke:#333,stroke-width:2px
-    style E fill:#bfb,stroke:#333,stroke-width:2px
-```
+![System Architecture](images/flowchart.png)
 
 ---
 
@@ -124,6 +112,39 @@ uvicorn src.api:app --reload
 #### Step 2: Open `index.html` in your web browser.
 
 ---
+
+## 🐳 Running with Docker
+
+To simplify deployment, the project can be containerized using Docker. Follow these steps to build and run the Docker container:
+
+### 1. Build the Docker Image
+
+```bash
+docker build -t predictive-maintenance .
+```
+
+### 2. Run the Docker Container
+
+```bash
+docker run -d -p 8000:8000 --name predictive-maintenance predictive-maintenance
+```
+
+### 3. Access the Application
+
+- **FastAPI Dashboard**: Open your browser and navigate to `http://localhost:8000`.
+- **Streamlit Dashboard**: If included, navigate to the appropriate port (e.g., `http://localhost:8501`).
+
+### 4. Stop the Docker Container
+
+```bash
+docker stop predictive-maintenance
+```
+
+### 5. Remove the Docker Container
+
+```bash
+docker rm predictive-maintenance
+```
 
 ## 📂 Project Structure
 
